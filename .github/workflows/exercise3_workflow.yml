@@ -8,8 +8,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-env:
-  MySecret: ${{ secrets.CAT }}
 jobs:
   view_secret_job:
     runs-on: ubuntu-latest
@@ -20,6 +18,8 @@ jobs:
     steps:
       - run: echo "The token value is ${{ secrets.GITHUB_TOKEN }}"
   run_only_if:
+    env:
+      aMySecret: ${{ secrets.CAT }}
     runs-on: ubuntu-latest
     if: ${{ env.MySecret == 'lissie' }}
     steps:
