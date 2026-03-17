@@ -1,0 +1,19 @@
+name: exercise3_workflow
+run-name: Exercise 3 workflow # Optional
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  view_secret_job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The secret value is ${{ secrets.CAT }}"
+  print_token_job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The token value is ${{ secrets.GITHUB_TOKEN }}"
