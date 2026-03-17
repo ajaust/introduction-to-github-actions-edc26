@@ -1,0 +1,36 @@
+name: task6
+run-name: task 6
+
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lag-pdf: 
+    name: Lag PDF
+    runs-on: ubuntu-latest
+    container: pandoc/extra
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build PDF
+        run: pandoc --template eisvogel exercises.md -o exercises.pdf
+      
+      - uses: actions/upload-artifact@v7
+        with:
+          name: exercise sheet
+          path: exercises.pdf
+          retention-days: 1
+
+      - name: Build slides PDF
+        run: pandoc -t beamer slides.md -o slides.pdf
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: slides
+          path: slides.pdf
+          retention-days: 1
