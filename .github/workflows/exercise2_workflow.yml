@@ -1,5 +1,5 @@
-name: Workflow of exercise 1
-run-name: First workflow # Optional
+name: Workflow of exercise 2
+run-name: Second workflow
 
 
 # Events triggering the workflow
