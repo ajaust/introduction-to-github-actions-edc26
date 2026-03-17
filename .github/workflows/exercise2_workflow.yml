@@ -5,7 +5,7 @@ run-name: First workflow # Optional
 # Events triggering the workflow
 on:
   workflow_dispatch:
-  push:
+  pull_request:
     branches:
       - main
 
